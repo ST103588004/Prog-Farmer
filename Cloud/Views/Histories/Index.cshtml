@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Cloud.Models.History>
+
+<h2 class="text-success text-center">Order History</h2>
+<table class="table table-bordered mt-4">
+    <thead class="table-success">
+        <tr>
+            <th>History ID</th>
+            <th>Email</th>
+            <th>Product Name</th>
+            <th>Shipping Address</th>
+            <th>Shipping Status</th>
+            <th>History Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.HistoryID</td>
+                <td>@item.Email</td>
+                <td>@item.ProductName</td>
+                <td>@item.ShippingAddress</td>
+                <td>@item.ShippingStatus</td>
+                <td>@item.HistoryDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.HistoryID">Details</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.HistoryID">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.HistoryID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
